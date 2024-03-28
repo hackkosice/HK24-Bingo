@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <style>
+        .checked-card {
+            background-color: #90ee90; /* light green when checked */
+        }
+        .form-check-input {
+            display: none; /* make checkbox invisible */
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</head>
+<body class="d-flex justify-content-center align-items-center flex-column vh-100">
+<h1 class="h1 fw-light mb-5">Bingo Hack Kosice 24</h1>
+<div class="container mb-5" id="checkboxGrid">
+    <!-- Javascript will generate grid here -->
+</div>
+
+<script>
+    var items = ["Task 1", "Task 2", "Task 3", "Task 4", "Task 5",
+        "Task 6", "Task 7", "Task 8", "Task 9", "Task 10",
+        "Task 11", "Task 12", "Task 13", "Task 14", "Task 15",
+        "Task 16", "Task 17", "Task 18", "Task 19", "Task 20",
+        "Task 21", "Task 22", "Task 23", "Task 24", "Task 25"];
+    var container = document.getElementById("checkboxGrid");
+
+    // function to save checkbox states in local storage
+    function saveStates() {
+        var states = items.map(function(item, index) {
+            var checkbox = document.getElementById("chk" + (index + 1));
+            return {
+                checked: checkbox ? checkbox.checked : false,
+                marked: checkbox && checkbox.closest('.card').classList.contains('checked-card')
+            };
+        });
+        localStorage.setItem("checkboxStates", JSON.stringify(states));
+    }
+
+    // function to load checkbox states from local storage
+    function loadStates() {
+        var statesStr = localStorage.getItem("checkboxStates");
+        return statesStr ? JSON.parse(statesStr) : items.map(item => ({ checked: false, marked: false }));
+    }
+
+    // load checkbox states from local storage
+    var states = loadStates();
+
+    items.forEach(function(item, index) {
+        // create a new row for every 5 items
+        if (index % 5 == 0) {
+            var row = document.createElement("div");
+            row.className = "row mb-4";
+            container.appendChild(row);
+        }
+
+        var col = document.createElement("div");
+        col.className = "col";
+        var label = document.createElement("label");
+        label.className = "form-check-label w-100 text-center shadow-sm";
+        var card = document.createElement("div");
+        card.className = "card h-100" + (states[index].marked ? ' checked-card' : '');
+        var cardBody = document.createElement("div");
+        cardBody.className = "card-body d-flex align-items-center justify-content-center";
+        var checkbox = document.createElement("input");
+        checkbox.className = "form-check-input";
+        checkbox.type = "checkbox";
+        checkbox.id = "chk" + (index + 1);
+        checkbox.checked = states[index].checked;  // set checkbox state
+        checkbox.addEventListener("change", function() {
+            this.closest('.card').classList.toggle('checked-card');
+            saveStates();
+        });   // update the state in local storage whenever checkbox is clicked
+
+        cardBody.appendChild(checkbox);
+        cardBody.appendChild(document.createTextNode(item));
+        card.appendChild(cardBody);
+        label.appendChild(card);
+        col.appendChild(label);
+        var rows = container.getElementsByClassName("row");
+        rows[rows.length-1].appendChild(col);
+    });
+</script>
+</body>
+</html>
