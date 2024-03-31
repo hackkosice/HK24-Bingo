@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hack Kosice 2024 - Bingo</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <link rel="icon" href=
+            "https://hackkosice.com/images/favicon.png"
+          type="image/x-icon">
 
     <style>
         .checked-card {
@@ -23,11 +27,36 @@
 </div>
 
 <script>
-    var items = ["Task 1", "Task 2", "Task 3", "Task 4", "Task 5",
-        "Task 6", "Task 7", "Task 8", "Task 9", "Task 10",
-        "Task 11", "Task 12", "Task 13", "Task 14", "Task 15",
-        "Task 16", "Task 17", "Task 18", "Task 19", "Task 20",
-        "Task 21", "Task 22", "Task 23", "Task 24", "Task 25"];
+    var items = [
+        "Compete in banana challenge",
+        "Visit one Workshop",
+        "Play table football with Organizer/Volunteer",
+        "Task 4",
+        "Get help from mentor",
+
+        "Task 6",
+        "Create your own pancake",
+        "Do 20 jumping jacks while electro music is playing",
+        "Task 9",
+        "Task 10",
+
+        "Tell Matej at the sound place some good joke",
+        "Task 12",
+        "Attend the hackathon",
+        "Task 14",
+        "Add a song to the playlist",
+
+        "Task 16",
+        "Task 17",
+        "Task 18",
+        "Compete in arm wrestling with organizer",
+        "Task 20",
+
+        "Create submission at devpost",
+        "Task 22",
+        "Task 23",
+        "Join Werewolf challenge",
+        "Visit another Workshop"];
     var container = document.getElementById("checkboxGrid");
 
     // function to save checkbox states in local storage
@@ -62,7 +91,7 @@
         var col = document.createElement("div");
         col.className = "col";
         var label = document.createElement("label");
-        label.className = "form-check-label w-100 text-center shadow-sm";
+        label.className = "form-check-label w-100 text-center shadow-sm h-100";
         var card = document.createElement("div");
         card.className = "card h-100" + (states[index].marked ? ' checked-card' : '');
         var cardBody = document.createElement("div");
