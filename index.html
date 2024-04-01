@@ -11,7 +11,8 @@
 
     <style>
         .checked-card {
-            background-color: #90ee90; /* light green when checked */
+            background-color: rgb(239 97 30);
+            color: white;/* light green when checked */
         }
         .form-check-input {
             display: none; /* make checkbox invisible */
@@ -20,17 +21,20 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 </head>
-<body class="d-flex justify-content-center align-items-center flex-column vh-100">
-<h1 class="h1 fw-light mb-5">Bingo Hack Kosice 24</h1>
-<div class="container mb-5" id="checkboxGrid">
-    <!-- Javascript will generate grid here -->
+<body class="d-flex justify-content-center align-items-center flex-column vh-100" style="background-color: #f9fafd">
+<div style="background-color: rgb(244,244,244); color: rgb(94,33,55)" class="rounded-3 p-3">
+    <h1 class="h1 fw-light mb-5 text-center fw-bold">Bingo Hack Kosice 24</h1>
+    <div class="mb-5" id="checkboxGrid">
+        <!-- Javascript will generate grid here -->
+    </div>
 </div>
+
 
 <script>
     var items = [
         "Compete in banana challenge",
         "Visit one Workshop",
-        "Play table football with Organizer/Volunteer",
+        "Play table football with Organizer / Volunteer",
         "Go for a coffee",
         "Get help from mentor",
 
